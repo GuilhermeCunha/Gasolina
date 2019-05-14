@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/media1"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/media1"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:id="@+id/media2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/media1"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/media2" />
+
+    <Button
+        android:id="@+id/valortrajeto"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/valortrajeto"
+        android:layout_below="@+id/media2"
+        />
+
+    <Button
+        android:id="@+id/calculoabastecimento"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/calculoabastecimento"
+        android:layout_below="@+id/valortrajeto"
+        />
+
+    <Button
+        android:id="@+id/gasolinaalcool"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/gasolinaalcool"
+        android:layout_below="@+id/calculoabastecimento"
+        />
+
+    <Button
+        android:id="@+id/configuracoes"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/configuracoes"
+        android:layout_below="@+id/gasolinaalcool"
+        />
+
+</RelativeLayout>

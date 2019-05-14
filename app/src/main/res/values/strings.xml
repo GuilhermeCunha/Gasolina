@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SaveGas</string>
+    <string name="media1">Media de consumo / Km percorrido</string>
+    <string name="media2">Media de consumo / Km inicial / Km final</string>
+    <string name="valortrajeto">Valor a gastar por trajeto</string>
+    <string name="calculoabastecimento">Calculo abastecimento</string>
+    <string name="gasolinaalcool">Gasolina ou Alcool</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="KmsRodados">Kms Rodados</string>
+    <string name="LitrosAbastecidos">Litros Abastecidos</string>
+    <string name="Calcular">Calcular</string>
 </resources>

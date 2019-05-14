@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mediaDeConsumoPorKm">
+
+
+    <TextView
+        android:id="@+id/TextKmsRodados"
+        android:textSize="15pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/KmsRodados"
+        />
+    <EditText
+        android:id="@+id/editKmsRodados"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/TextKmsRodados"
+    />
+
+    <TextView
+    android:id="@+id/TextLitrosAbastecidos" android:textSize="15pt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/editKmsRodados"
+    android:text="@string/LitrosAbastecidos"
+    />
+
+    <EditText
+        android:id="@+id/editLitrosAbastecidos"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/TextLitrosAbastecidos"
+    />
+
+    <Button
+        android:id="@+id/calcularMediaConsumo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editLitrosAbastecidos"
+        android:layout_alignRight="@+id/editLitrosAbastecidos"
+        android:text="@string/Calcular"
+        />
+
+
+
+</RelativeLayout>
