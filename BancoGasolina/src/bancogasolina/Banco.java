@@ -5,10 +5,11 @@
  */
 package bancogasolina;
 
-import java.beans.Statement;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,19 +22,18 @@ public class Banco {
     private ResultSet resultados;
     
     public boolean conectar(){
-        String servidor = "jdbc:mysql://localhost:3306/gasolina";
+        String servidor = "jdbc:mysql://localhost:3306/gasolina?useTimezone=true&serverTimezone=UTC";
         String usuario = "root";
-        String senha = "Banco123";
-        //String driver = "com.mysql.jdbc.Driver";
+        String senha = "12345678";
         String driver = "com.mysql.cj.jdbc.Driver";
         
         try {
-            JOptionPane.showMessageDialog(null, "ENTREI TRY");
+            //JOptionPane.showMessageDialog(null, "ENTREI TRY");
             Class.forName(driver);
-            JOptionPane.showMessageDialog(null, "PASSEI DRIVER");
+            //JOptionPane.showMessageDialog(null, "PASSEI DRIVER");
             this.conexao = (Connection) DriverManager.getConnection(servidor,
             usuario, senha);
-            JOptionPane.showMessageDialog(null, "PASSEI CONEXAO");
+            //JOptionPane.showMessageDialog(null, "PASSEI CONEXAO");
             this.declaracao = (Statement) this.conexao.createStatement();
         } catch (Exception e){
             System.out.println("Erro "+ e.getMessage());
