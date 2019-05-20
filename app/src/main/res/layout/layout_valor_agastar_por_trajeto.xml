@@ -17,7 +17,9 @@
     <EditText
         android:id="@+id/EditOrigem"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="@string/TxtOrigem"/>
 
     <TextView
         android:id="@+id/TxtDestino"
@@ -28,7 +30,9 @@
     <EditText
         android:id="@+id/EditDestino"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="@string/TxtDestino"/>
     <TextView
     android:id="@+id/TxtConsumo"
     android:layout_width="match_parent"
@@ -38,7 +42,9 @@
     <EditText
         android:id="@+id/EditConsumo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="Consumo em Km/L"/>
     <TextView
         android:id="@+id/TxtValorCombustivel"
         android:layout_width="match_parent"
@@ -48,7 +54,9 @@
     <EditText
         android:id="@+id/EditValorCombustivel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="@string/TxtValorCombustivel"/>
 
 
     <Switch
