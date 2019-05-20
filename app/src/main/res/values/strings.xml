@@ -9,4 +9,10 @@
     <string name="KmsRodados">Kms Rodados</string>
     <string name="LitrosAbastecidos">Litros Abastecidos</string>
     <string name="Calcular">Calcular</string>
+    <string name="TxtOrigem">Endereço de origem:</string>
+    <string name="TxtDestino">Endereço de destino:</string>
+    <string name="BotaoValorTrajeto">Calcular valor do trajeto</string>
+    <string name="TxtConsumo">Qual o consumo em Km/l do seu carro?</string>
+    <string name="TxtValorCombustivel">Qual o valor do litro do combustível?</string>
+    <string name="CheckIdaEVolta">Ida e volta</string>
 </resources>

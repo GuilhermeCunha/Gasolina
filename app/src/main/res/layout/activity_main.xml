@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
     <Button
         android:id="@+id/media1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/media1"
@@ -20,7 +21,6 @@
         android:id="@+id/media2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@+id/media1"
         android:layout_gravity="center_horizontal"
         android:text="@string/media2" />
 
@@ -29,7 +29,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/valortrajeto"
-        android:layout_below="@+id/media2"
         />
 
     <Button
@@ -45,7 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/gasolinaalcool"
-        android:layout_below="@+id/calculoabastecimento"
         />
 
     <Button
@@ -53,7 +51,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/configuracoes"
-        android:layout_below="@+id/gasolinaalcool"
         />
 
-</RelativeLayout>
+</LinearLayout>

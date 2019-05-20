@@ -1,9 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".valorAGastarPorTrajeto">
 
-</RelativeLayout>
+
+    <TextView
+        android:id="@+id/TxtOrigem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TxtOrigem" />
+
+    <EditText
+        android:id="@+id/EditOrigem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/TxtDestino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TxtOrigem" />
+
+    <EditText
+        android:id="@+id/EditDestino"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+    android:id="@+id/TxtConsumo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/TxtConsumo" />
+
+    <EditText
+        android:id="@+id/EditConsumo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/TxtValorCombustivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TxtValorCombustivel" />
+
+    <EditText
+        android:id="@+id/EditValorCombustivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Switch
+        android:id="@+id/SwitchIdaEVolta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/CheckIdaEVolta" />
+
+    <Button
+        android:id="@+id/BotaoValorTrajeto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/valortrajeto" />
+
+</LinearLayout>
