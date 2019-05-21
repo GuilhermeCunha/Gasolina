@@ -19,4 +19,10 @@
     <string name="HintEditDestino">Avenida Manuel Dias</string>
     <string name="HintEditConsumo">9.5</string>
     <string name="HintEditValorCombustivel">4.25</string>
+    <string name="TxtNomeCarro">Qual o modelo do seu carro?</string>
+    <string name="HintNomeCarro">Uno</string>
+    <string name="TxtConsumoCarro">Quantos Km/l de combustível o seu carro faz?</string>
+    <string name="HintConsumoCarro">8.5</string>
+    <string name="BotaoCadastrarCarro">Cadastrar Carro</string>
+
 </resources>
