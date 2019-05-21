@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/media1"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/media1"
@@ -51,6 +51,18 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/configuracoes"
+        />
+    <Button
+        android:id="@+id/cadastrarCarro"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="@string/BotaoCadastrarCarro"
+        />
+    <Button
+        android:id="@+id/consultaBanco"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Consulta Banco"
         />
 
 </LinearLayout>

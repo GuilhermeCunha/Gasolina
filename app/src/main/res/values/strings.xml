@@ -24,5 +24,7 @@
     <string name="TxtConsumoCarro">Quantos Km/l de combustível o seu carro faz?</string>
     <string name="HintConsumoCarro">8.5</string>
     <string name="BotaoCadastrarCarro">Cadastrar Carro</string>
+    <string name="TxtConsultarCarroPorNome">Nome do carro:</string>
+    <string name="BotaoBuscarCarro">Buscar Carro</string>
 
 </resources>
