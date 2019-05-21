@@ -66,31 +66,43 @@ public class valorAGastarPorTrajeto extends AppCompatActivity {
 
                     strOrigem = origem.getText().toString();
                     strDestino = destino.getText().toString();
-                    double dbConsumo = Double.parseDouble(consumo.getText().toString());
-                    double dbValorCombustivel = Double.parseDouble(valorCombustivel.getText().toString());
 
-                    double distance = Distance.getDistance(strOrigem, strDestino);
-                    Log.e("DISTANCIA IDA", "Distancia: " + distance);
+                    try{
+                        double dbConsumo = Double.parseDouble(consumo.getText().toString());
+                        double dbValorCombustivel = Double.parseDouble(valorCombustivel.getText().toString());
+                        double distance = Distance.getDistance(strOrigem, strDestino);
+
+                        //Log.e("DISTANCIA IDA", "Distancia: " + distance);
 
 
-                    double valorTotal = ((distance/dbConsumo) * dbValorCombustivel);
+                        double valorTotal = ((distance/dbConsumo) * dbValorCombustivel);
 
-                    if (boolIdaEVolta) {
-                        distance = Distance.getDistance(strDestino, strOrigem);
-                        valorTotal += ((distance/dbConsumo) * dbValorCombustivel);
-                        Log.e("DISTANCIA VOLTA", "Distancia: " + distance);
+                        if (boolIdaEVolta) {
+                            distance = Distance.getDistance(strDestino, strOrigem);
+                            valorTotal += ((distance/dbConsumo) * dbValorCombustivel);
+                            //Log.e("DISTANCIA VOLTA", "Distancia: " + distance);
+                        }
+
+                        BigDecimal exactValue = new BigDecimal(valorTotal)
+                                .setScale(2, RoundingMode.UP);
+                        valorTotal = exactValue.doubleValue();
+                        //Log.e("NGVL", "Passei pelo VALORTOTAL");
+                        //Criando POP UP do resultado
+                        AlertDialog.Builder builder = new AlertDialog.Builder(valorAGastarPorTrajeto.this);
+                        builder.setTitle("O custo deste trajeto é de:");
+                        builder.setMessage("R$" + valorTotal);
+                        builder.create();
+                        builder.show();
+
+                    }catch (Exception e){
+                        AlertDialog.Builder builder0 = new AlertDialog.Builder(valorAGastarPorTrajeto.this);
+                        builder0.setTitle("Erro no preenchimento");
+                        builder0.setMessage("Algum dado preenchido não está no formato correto");
+                        builder0.create();
+                        builder0.show();
                     }
 
-                    BigDecimal exactValue = new BigDecimal(valorTotal)
-                            .setScale(2, RoundingMode.UP);
-                    valorTotal = exactValue.doubleValue();
-                    //Log.e("NGVL", "Passei pelo VALORTOTAL");
-                    //Criando POP UP do resultado
-                    AlertDialog.Builder builder = new AlertDialog.Builder(valorAGastarPorTrajeto.this);
-                    builder.setTitle("O custo deste trajeto é de:");
-                    builder.setMessage("R$" + valorTotal);
-                    builder.create();
-                    builder.show();
+
                 }
 
             }

@@ -49,8 +49,8 @@ public class Distance {
 
             return distance;
         }catch(JSONException e){
-            //tratar
+            return 0.0;
         }
-        return 0.0;
+        //return 0.0;
     }
 }

@@ -15,4 +15,8 @@
     <string name="TxtConsumo">Qual o consumo em Km/l do seu carro?</string>
     <string name="TxtValorCombustivel">Qual o valor do litro do combustível?</string>
     <string name="CheckIdaEVolta">Ida e volta</string>
+    <string name="HintEditOrigem">Rua Gilberto Freyre</string>
+    <string name="HintEditDestino">Avenida Manuel Dias</string>
+    <string name="HintEditConsumo">9.5</string>
+    <string name="HintEditValorCombustivel">4.25</string>
 </resources>
