@@ -25,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        CriaBanco banco = new CriaBanco(this);
-        SQLiteDatabase db = new SQLiteDatabase();
-
-        banco.onCreate(this);
 
         media1 = (Button) findViewById(R.id.media1);
         media2 = (Button) findViewById(R.id.media2);
@@ -59,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         valorTrajeto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, valorAGastarPorTrajeto.class);
+                //Intent i = new Intent(MainActivity.this, valorAGastarPorTrajeto.class);
+                Intent i = new Intent(MainActivity.this, valorAGastarPorTrajeto2.class);
                 startActivity(i);
             }
         });

@@ -1,6 +1,7 @@
 package com.example.savegas;
 
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,7 +27,19 @@ public class valorAGastarPorTrajeto extends AppCompatActivity {
         setContentView(R.layout.layout_valor_agastar_por_trajeto);
 
 
+        Button mapa;
+        mapa = (Button) findViewById(R.id.BotaoParaMapa);
 
+        mapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean InternetConnectivity = ConnectivityInfo.isConnected(valorAGastarPorTrajeto.this);
+                if(InternetConnectivity){
+                    Intent i = new Intent(valorAGastarPorTrajeto.this, com.example.savegas.MapsActivity.class);
+                    startActivity(i);
+                }
+            }
+        });
         Button calcular;
         calcular = (Button) findViewById(R.id.BotaoValorTrajeto);
 
