@@ -2,6 +2,8 @@ package ModulosJava;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import static android.content.Context.CONNECTIVITY_SERVICE;
+
 
 public final class ConnectivityInfo {
     /**
@@ -12,19 +14,13 @@ public final class ConnectivityInfo {
      */
 
     public static boolean isConnected(Context cont){
-        boolean conectado = false;
-        ConnectivityManager conmag;
-        conmag = (ConnectivityManager)cont.getSystemService(Context.CONNECTIVITY_SERVICE);
-        conmag.getActiveNetworkInfo();
-        //Verifica o WIFI
-        if(conmag.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnected()){
+        boolean conectado;
+        ConnectivityManager conectivtyManager = (ConnectivityManager) cont.getApplicationContext().getSystemService(CONNECTIVITY_SERVICE);
+        if (conectivtyManager.getActiveNetworkInfo() != null
+                && conectivtyManager.getActiveNetworkInfo().isAvailable()
+                && conectivtyManager.getActiveNetworkInfo().isConnected()) {
             conectado = true;
-        }
-        //Verifica o 3G
-        else if(conmag.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected()){
-            conectado = true;
-        }
-        else{
+        } else {
             conectado = false;
         }
         return conectado;
