@@ -43,7 +43,7 @@
         </activity>
 
         <activity
-            android:name=".MapsActivity"
+            android:name="com.example.savegas.MapsActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
