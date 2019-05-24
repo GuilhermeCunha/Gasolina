@@ -28,6 +28,11 @@
     <string name="BotaoBuscarCarro">Buscar Carro</string>
     <string name="title_activity_maps">Map</string>
     <string name="BotaoParaMapa">Abrir mapa</string>
+    <string name="TxtModeloDoCarro">Digite o modelo do seu carro</string>
+    <string name="TxtConsumoDoCarro">Digite o consumo do seu carro em Km/l</string>
+    <string name="SwitchtxtGasolina">Gasolina</string>
+    <string name="SwitchtxtAlcool">Alcool</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

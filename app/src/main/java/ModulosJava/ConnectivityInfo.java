@@ -6,6 +6,7 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 
 
 public final class ConnectivityInfo {
+    private static final String TAG = "ConnectivityInfo";
     /**
      *Verifica a disponibilidade da rede  de dados<br>
      *Tanto WIFI quanto 3G

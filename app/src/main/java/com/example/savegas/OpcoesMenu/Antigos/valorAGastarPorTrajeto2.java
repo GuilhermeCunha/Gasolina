@@ -1,12 +1,13 @@
-package com.example.savegas;
+package com.example.savegas.OpcoesMenu.Antigos;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.savegas.OpcoesMenu.MapsActivity;
+import com.example.savegas.R;
 
 public class valorAGastarPorTrajeto2 extends AppCompatActivity{
     private FragmentManager fragmentManager;

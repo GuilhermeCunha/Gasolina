@@ -1,13 +1,15 @@
-package com.example.savegas;
+package com.example.savegas.OpcoesMenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class gasolinaOuAlcool extends AppCompatActivity {
+import com.example.savegas.R;
+
+public class configuracoes extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_gasolina_ou_alcool);
+        setContentView(R.layout.layout_configuracoes);
     }
 }

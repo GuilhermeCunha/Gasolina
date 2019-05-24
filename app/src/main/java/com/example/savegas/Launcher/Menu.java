@@ -1,4 +1,4 @@
-package com.example.savegas;
+package com.example.savegas.Launcher;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -10,8 +10,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.savegas.OpcoesMenu.MapsActivity;
+import com.example.savegas.OpcoesMenu.calculoAbastecimento;
+import com.example.savegas.OpcoesMenu.gasolinaOuAlcool;
+import com.example.savegas.OpcoesMenu.mediaDeConsumoKmInicialKmFinal;
+import com.example.savegas.OpcoesMenu.mediaDeConsumoPorKm;
+import com.example.savegas.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+
+import ModulosJava.ConnectivityInfo;
 /*
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -19,21 +27,34 @@ import Banco.BancoController;
 import Banco.CriaBanco;
 */
 
-public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class Menu extends AppCompatActivity {
+    private static final String TAG = "Menu";
     private static final int ERROR_DIALOG_REQUEST = 9001;
+    private String modelo = "";
+    private boolean gasolina = true;
+    private double consumo = 0.0;
+    private Bundle extras;
+
     Button media1;
     Button media2;
     Button valorTrajeto;
     Button calcAbastecimento;
     Button gasolinaAlcool;
     Button configuracoes;
-    Button cadastrarCarro;
-    Button consultaBanco;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        extras = getIntent().getExtras();
+        if (extras != null) {
+            Log.e("Bundle", "ENTREI NO IF");
+            modelo = extras.getString("modelo");
+            gasolina = extras.getBoolean("gasolina");
+            consumo = extras.getDouble("consumo");
+            Log.e("Bundle", "Modelo: " + modelo);
+            Log.e("Bundle", "gasolina: " + gasolina);
+            Log.e("Bundle", "consumo: " + consumo);
+        }
 
 
         media1 = (Button) findViewById(R.id.media1);
@@ -42,14 +63,12 @@ public class MainActivity extends AppCompatActivity {
         calcAbastecimento = (Button) findViewById(R.id.calculoabastecimento);
         gasolinaAlcool = (Button) findViewById(R.id.gasolinaalcool);
         configuracoes = (Button) findViewById(R.id.configuracoes);
-        cadastrarCarro = (Button) findViewById(R.id.cadastrarCarro);
-        consultaBanco = (Button) findViewById(R.id.consultaBanco);
 
 
         media1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, mediaDeConsumoPorKm.class);
+                Intent i = new Intent(Menu.this, mediaDeConsumoPorKm.class);
                 startActivity(i);
             }
         });
@@ -57,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         media2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, mediaDeConsumoKmInicialKmFinal.class);
+                Intent i = new Intent(Menu.this, mediaDeConsumoKmInicialKmFinal.class);
                 startActivity(i);
             }
         });
@@ -67,9 +86,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isServicesOK()){
-                    //Intent i = new Intent(MainActivity.this, valorAGastarPorTrajeto.class);
-                    Intent i = new Intent(MainActivity.this, MapsActivity.class);
-                    startActivity(i);
+                    if(ConnectivityInfo.isConnected(Menu.this)){
+                        //Intent i = new Intent(Menu.this, valorAGastarPorTrajeto.class);
+                        Intent i = new Intent(Menu.this, MapsActivity.class);
+                        i.putExtras(extras);
+                        startActivity(i);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Conecte-se a internet para poder realizar o calculo através do mapa", Toast.LENGTH_LONG).show();
+                    }
+
                 }
 
             }
@@ -78,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         calcAbastecimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, calculoAbastecimento.class);
+                Intent i = new Intent(Menu.this, calculoAbastecimento.class);
                 startActivity(i);
             }
         });
@@ -86,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         gasolinaAlcool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, gasolinaOuAlcool.class);
+                Intent i = new Intent(Menu.this, gasolinaOuAlcool.class);
                 startActivity(i);
             }
         });
@@ -94,33 +119,19 @@ public class MainActivity extends AppCompatActivity {
         configuracoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, com.example.savegas.configuracoes.class);
+                Intent i = new Intent(Menu.this, com.example.savegas.OpcoesMenu.configuracoes.class);
                 startActivity(i);
             }
         });
 
-        cadastrarCarro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, com.example.savegas.CadastraCarro.class);
-                startActivity(i);
-            }
-        });
-        consultaBanco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, com.example.savegas.ConsultaBanco.class);
-                startActivity(i);
-            }
-        });
 
     }
 
     public boolean isServicesOK(){
-        Log.e("CRIADO", "ENTREI NO ISSERVICES");
+        Log.e(TAG, "ENTREI NO ISSERVICES");
         Log.d(TAG, "isServicesOK: checking google services version");
 
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
+        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Menu.this);
 
         if(available == ConnectionResult.SUCCESS){
             //everything is fine and the user can make map requests
@@ -129,10 +140,10 @@ public class MainActivity extends AppCompatActivity {
         } else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             //an error occured but we can resolve it
             Log.d(TAG, "isServicesOK: an error occured but we can fix it");
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, ERROR_DIALOG_REQUEST);
+            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(Menu.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         }else{
-            Toast.makeText(MainActivity.this, "You can't make map requests", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Menu.this, "You can't make map requests", Toast.LENGTH_SHORT).show();
         }
         return false;
     }

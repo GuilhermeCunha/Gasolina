@@ -1,7 +1,9 @@
-package com.example.savegas;
+package com.example.savegas.OpcoesMenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.savegas.R;
 
 public class mediaDeConsumoKmInicialKmFinal extends AppCompatActivity {
 

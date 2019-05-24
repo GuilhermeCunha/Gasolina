@@ -1,4 +1,4 @@
-package com.example.savegas;
+package com.example.savegas.Mapa.Helpers;
 
 import android.util.Log;
 
@@ -31,7 +31,7 @@ public class MapsDistanceMatrix {
                 a.latitude + "," + a.longitude +
                 "&destinations=" +
                 d.latitude + "," + d.longitude +
-                "&departure_time=now&key=AIzaSyC4UN11wFMu6eyzl2Yqy0SlJKhbVUqqu-8";
+                "&departure_time=now&key=AIzaSyAdFxhY1adIeIwLc2iUKEbLtjlw6LJmgWc";
 
         // Making HTTP request
         try {

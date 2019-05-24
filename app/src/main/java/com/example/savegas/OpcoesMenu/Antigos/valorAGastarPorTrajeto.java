@@ -1,4 +1,4 @@
-package com.example.savegas;
+package com.example.savegas.OpcoesMenu.Antigos;
 
 
 import android.content.Intent;
@@ -6,11 +6,14 @@ import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+
+import com.example.savegas.OpcoesMenu.MapsActivity;
+import com.example.savegas.R;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -35,7 +38,7 @@ public class valorAGastarPorTrajeto extends AppCompatActivity {
             public void onClick(View v) {
                 boolean InternetConnectivity = ConnectivityInfo.isConnected(valorAGastarPorTrajeto.this);
                 if(InternetConnectivity){
-                    Intent i = new Intent(valorAGastarPorTrajeto.this, com.example.savegas.MapsActivity.class);
+                    Intent i = new Intent(valorAGastarPorTrajeto.this, MapsActivity.class);
                     startActivity(i);
                 }
             }

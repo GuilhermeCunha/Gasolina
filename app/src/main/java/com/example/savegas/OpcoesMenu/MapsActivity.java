@@ -1,59 +1,40 @@
-package com.example.savegas;
+package com.example.savegas.OpcoesMenu;
 
 import android.Manifest;
-import android.graphics.Color;
-import android.graphics.Point;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.savegas.DistancePolyline.DirectionsJSONParser;
+import com.example.savegas.Mapa.Helpers.MapsDistanceMatrix;
+import com.example.savegas.Mapa.Helpers.PlaceAutocompleteAdapter;
+import com.example.savegas.R;
+import com.example.savegas.TaskLoadedCallback;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.mapbox.api.directions.v5.DirectionsCriteria;
-import com.mapbox.api.matrix.v1.MapboxMatrix;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import static com.example.savegas.MapsDistanceMatrix.getDistanceInfo;
-
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback ,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener, TaskLoadedCallback {
     private static final String TAG = "MapsActivity";
     private GoogleMap mMap;
 
@@ -62,20 +43,30 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     private static final float DEFAULT_ZOOM = 15f;
 
+
     private PlaceAutocompleteAdapter mPlaceAutocompleteAdapter;
     private GoogleApiClient mGoogleApiClient;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
             new LatLng(-40, -168), new LatLng(71, 136));
     private MapsDistanceMatrix matrix;
 
+    //Distance
+    private MarkerOptions place1, place2;
+    private Polyline currentPolyline;
+
     //Elementos
     //private AutoCompleteTextView acOrigem;
     //private AutoCompleteTextView acDestino;
     private EditText edOrigem;
     private EditText edDestino;
-
-
     private Button BotaoCalcular;
+
+
+
+    //Informações do carro
+    private String modelo = "";
+    private boolean gasolina = true;
+    private double consumo = 0.0;
 
 
 
@@ -85,6 +76,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
         final ArrayList markerPoints= new ArrayList();
+        /*
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
@@ -126,7 +118,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
 
             }
-        });
+        });*/
+
         //LatLng llorigem = new LatLng();
         //LatLng lldestino = new LatLng();
         //origem.position(llorigem);
@@ -134,6 +127,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
+
         LatLng brasil = new LatLng(-12.500932, -39.189517);
         mMap.addMarker(new MarkerOptions().position(brasil).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(brasil));
@@ -159,7 +153,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         Button botaoCalcular;
         botaoCalcular = (Button) findViewById(R.id.BotaoCalcularGastoPorTrajeto);
         //botaoCalcular.setOnEditorActionListener();
-        Log.e("CRIADO", "Passei pelo botao");
+        Log.e(TAG, "Passei pelo botao");
         botaoCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,8 +164,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 String txtOrigem = edOrigem.getText().toString();
                 String txtDestino = edDestino.getText().toString();
-                Log.e("CRIADO: " , txtOrigem);
-                Log.e("CRIADO: " , txtDestino);
+                Log.e(TAG , txtOrigem);
+                Log.e(TAG, txtDestino);
 
                 Geocoder geocoder = new Geocoder(MapsActivity.this);
                 //Address adOrigem, adDestino;
@@ -182,8 +176,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Address adOrigem = list.get(0);
                     list = geocoder.getFromLocationName(txtDestino, 1);
                     Address adDestino = list.get(0);
-                    Log.e("ENDEREÇO", adOrigem.getAddressLine(0));
-                    Log.e("ENDEREÇO", adDestino.getAddressLine(0));
+                    Log.e(TAG, adOrigem.getAddressLine(0));
+                    Log.e(TAG, adDestino.getAddressLine(0));
                     LatLng llOrigem = new LatLng(adOrigem.getLatitude(),adOrigem.getLongitude());
                     LatLng llDestino = new LatLng(adDestino.getLatitude(),adDestino.getLongitude());
                     Location a = new Location("");
@@ -192,17 +186,31 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     Location b = new Location("");
                     b.setLatitude(llDestino.latitude);
                     b.setLongitude(llDestino.longitude);
+
+
                     mMap.addMarker(new MarkerOptions().position(llOrigem).title(adOrigem.getAddressLine(0)));
                     mMap.addMarker(new MarkerOptions().position(llDestino).title(adDestino.getAddressLine(0)));
+
                     float distance = a.distanceTo(b)/1000;
-                    Toast.makeText(getApplicationContext(), ""+distance, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Distancia: " + distance + "kms", Toast.LENGTH_LONG).show();
+
+                    place1 = (new MarkerOptions().position(llOrigem).title(adOrigem.getAddressLine(0)));
+                    place2 = (new MarkerOptions().position(llDestino).title(adDestino.getAddressLine(0)));
                     moveCamera(llOrigem,DEFAULT_ZOOM, adOrigem.getAddressLine(0));
+                    /*
                     //Getting both the coordinates
+                    Log.e("DISTANCIA", "ANTES DO FETCH");
+                    new FetchURL(MapsActivity.this).execute(getUrl(place1.getPosition(), place2.getPosition(), "driving"), "driving");
+                    Log.e("DISTANCIA", "DEPOIS DO FETCH");
 
                     Log.e("DISTANCIA", "ANTES DE CHAMAR O MATRIX");
                     double kms = getDistanceInfo(llOrigem, llDestino);
                     Log.e("DISTANCIA", "DEPOIS DE CHAMAR O MATRIX");
-                    /*mMap.addPolyline(new PolylineOptions().add(llOrigem, new LatLng(llOrigem.latitude,llOrigem.longitude),new LatLng(llDestino.latitude,llDestino.longitude), llDestino))
+                    */
+
+                    /*
+                    CRIA UMA LINHA RETA ENTRE OS DOIS PONTOS
+                    mMap.addPolyline(new PolylineOptions().add(llOrigem, new LatLng(llOrigem.latitude,llOrigem.longitude),new LatLng(llDestino.latitude,llDestino.longitude), llDestino))
                     .setWidth(10);
                     */
                 } catch (Exception e) {
@@ -233,13 +241,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
                 */
         //onMapReady(mMap);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Log.e("Bundle", "ENTREI NO IF");
+            modelo = extras.getString("modelo");
+            gasolina = extras.getBoolean("gasolina");
+            consumo = extras.getDouble("consumo");
+            Log.e("Bundle", "2 Modelo: " + modelo);
+            Log.e("Bundle", "2 gasolina: " + gasolina);
+            Log.e("Bundle", "2 consumo: " + consumo);
+        }
+
         initMap();
     }
     private void initMap(){
         Log.d(TAG, "initMap: initializing map");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
-        mapFragment.getMapAsync(MapsActivity.this);
+        /*
+        MapFragment mapFragment = (MapFragment) getFragmentManager()
+                .findFragmentById(R.id.mapNearBy);
+                */
+        mapFragment.getMapAsync(this);
+        //mapFragment.getMapAsync(MapsActivity.this);
     }
 
 
@@ -261,158 +285,28 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
 
-
-
-
-    private class DownloadTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... url) {
-
-            String data = "";
-
-            try {
-                data = downloadUrl(url[0]);
-            } catch (Exception e) {
-                Log.d("Background Task", e.toString());
-            }
-            return data;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
-
-            ParserTask parserTask = new ParserTask();
-
-
-            parserTask.execute(result);
-
-        }
-    }
-
-
-    /**
-     * A class to parse the Google Places in JSON format
-     */
-    private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
-
-        // Parsing the data in non-ui thread
-        @Override
-        protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
-
-            JSONObject jObject;
-            List<List<HashMap<String, String>>> routes = null;
-
-            try {
-                jObject = new JSONObject(jsonData[0]);
-                DirectionsJSONParser parser = new DirectionsJSONParser();
-
-                routes = parser.parse(jObject);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return routes;
-        }
-
-        @Override
-        protected void onPostExecute(List<List<HashMap<String, String>>> result) {
-            ArrayList points = null;
-            PolylineOptions lineOptions = null;
-            MarkerOptions markerOptions = new MarkerOptions();
-
-            for (int i = 0; i < result.size(); i++) {
-                points = new ArrayList();
-                lineOptions = new PolylineOptions();
-
-                List<HashMap<String, String>> path = result.get(i);
-
-                for (int j = 0; j < path.size(); j++) {
-                    HashMap<String, String> point = path.get(j);
-
-                    double lat = Double.parseDouble(point.get("lat"));
-                    double lng = Double.parseDouble(point.get("lng"));
-                    LatLng position = new LatLng(lat, lng);
-
-                    points.add(position);
-                }
-
-                lineOptions.addAll(points);
-                lineOptions.width(12);
-                lineOptions.color(Color.RED);
-                lineOptions.geodesic(true);
-
-            }
-
-// Drawing polyline in the Google Map for the i-th route
-            mMap.addPolyline(lineOptions);
-        }
-    }
-
-    private String getDirectionsUrl(LatLng origin, LatLng dest) {
-        String key = "&key="+ "AIzaSyC4UN11wFMu6eyzl2Yqy0SlJKhbVUqqu-8";
-
+    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
         // Origin of route
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
-
         // Destination of route
         String str_dest = "destination=" + dest.latitude + "," + dest.longitude;
-
-        // Sensor enabled
-        String sensor = "sensor=false";
-        String mode = "mode=driving";
+        // Mode
+        String mode = "mode=" + directionMode;
         // Building the parameters to the web service
-        String parameters = str_origin + "&" + str_dest + "&" + sensor + "&" + mode + key;
-
+        String parameters = str_origin + "&" + str_dest + "&" + mode;
         // Output format
         String output = "json";
-
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
-
-
+        String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + "AIzaSyAdFxhY1adIeIwLc2iUKEbLtjlw6LJmgWc";
         return url;
     }
 
-    /**
-     * A method to download json data from url
-     */
-    private String downloadUrl(String strUrl) throws IOException {
-        String data = "";
-        InputStream iStream = null;
-        HttpURLConnection urlConnection = null;
-        try {
-            URL url = new URL(strUrl);
-
-            urlConnection = (HttpURLConnection) url.openConnection();
-
-            urlConnection.connect();
-
-            iStream = urlConnection.getInputStream();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(iStream));
-
-            StringBuffer sb = new StringBuffer();
-
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-
-            data = sb.toString();
-
-            br.close();
-
-        } catch (Exception e) {
-            Log.d("Exception", e.toString());
-        } finally {
-            iStream.close();
-            urlConnection.disconnect();
-        }
-        return data;
+    @Override
+    public void onTaskDone(Object... values) {
+        if (currentPolyline != null)
+            currentPolyline.remove();
+        currentPolyline = mMap.addPolyline((PolylineOptions) values[0]);
     }
-
-
 
     /**
      * Manipulates the map once available.

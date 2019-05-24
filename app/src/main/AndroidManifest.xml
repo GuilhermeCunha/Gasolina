@@ -19,7 +19,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,36 +30,33 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <meta-data android:name="com.google.android.gms.version"
+        <meta-data
+            android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Launcher.InfoCarros">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.example.savegas.MapsActivity"
+            android:name=".OpcoesMenu.MapsActivity"
             android:label="@string/title_activity_maps">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.savegas.valorAGastarPorTrajeto" />
+                android:value="com.example.savegas.OpcoesMenu.Antigos.valorAGastarPorTrajeto" />
         </activity>
-
-        <activity android:name=".ConsultaBanco" />
-        <activity android:name=".CadastraCarro" />
-        <activity android:name=".configuracoes" />
-        <activity android:name=".gasolinaOuAlcool" />
-        <activity android:name=".calculoAbastecimento" />
-        <activity android:name=".valorAGastarPorTrajeto" />
-        <activity android:name=".mediaDeConsumoKmInicialKmFinal" />
-        <activity android:name=".mediaDeConsumoPorKm" />
-
+        <activity android:name=".Launcher.Menu" />
+        <activity android:name=".OpcoesMenu.configuracoes" />
+        <activity android:name=".OpcoesMenu.gasolinaOuAlcool" />
+        <activity android:name=".OpcoesMenu.calculoAbastecimento" />
+        <activity android:name=".OpcoesMenu.Antigos.valorAGastarPorTrajeto" />
+        <activity android:name=".OpcoesMenu.mediaDeConsumoKmInicialKmFinal" />
+        <activity android:name=".OpcoesMenu.mediaDeConsumoPorKm" />
     </application>
 
 </manifest>
