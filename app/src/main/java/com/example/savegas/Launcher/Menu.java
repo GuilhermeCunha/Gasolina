@@ -45,9 +45,9 @@ public class Menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        /*
         extras = getIntent().getExtras();
         if (extras != null) {
-            Log.e("Bundle", "ENTREI NO IF");
             modelo = extras.getString("modelo");
             gasolina = extras.getBoolean("gasolina");
             consumo = extras.getDouble("consumo");
@@ -55,6 +55,7 @@ public class Menu extends AppCompatActivity {
             Log.e("Bundle", "gasolina: " + gasolina);
             Log.e("Bundle", "consumo: " + consumo);
         }
+        */
 
 
         media1 = (Button) findViewById(R.id.media1);
@@ -87,10 +88,11 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                 if(isServicesOK()){
                     if(ConnectivityInfo.isConnected(Menu.this)){
-                        //Intent i = new Intent(Menu.this, valorAGastarPorTrajeto.class);
+
                         Intent i = new Intent(Menu.this, MapsActivity.class);
-                        i.putExtras(extras);
+                        //i.putExtras(extras);
                         startActivity(i);
+
                     }else{
                         Toast.makeText(getApplicationContext(), "Conecte-se a internet para poder realizar o calculo através do mapa", Toast.LENGTH_LONG).show();
                     }
@@ -128,7 +130,6 @@ public class Menu extends AppCompatActivity {
     }
 
     public boolean isServicesOK(){
-        Log.e(TAG, "ENTREI NO ISSERVICES");
         Log.d(TAG, "isServicesOK: checking google services version");
 
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(Menu.this);

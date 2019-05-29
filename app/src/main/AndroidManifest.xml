@@ -36,7 +36,7 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <activity android:name=".Launcher.InfoCarros">
+        <activity android:name=".Launcher.Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +50,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.savegas.OpcoesMenu.Antigos.valorAGastarPorTrajeto" />
         </activity>
-        <activity android:name=".Launcher.Menu" />
         <activity android:name=".OpcoesMenu.configuracoes" />
         <activity android:name=".OpcoesMenu.gasolinaOuAlcool" />
         <activity android:name=".OpcoesMenu.calculoAbastecimento" />

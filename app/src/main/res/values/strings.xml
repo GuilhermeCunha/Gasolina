@@ -32,6 +32,8 @@
     <string name="TxtConsumoDoCarro">Digite o consumo do seu carro em Km/l</string>
     <string name="SwitchtxtGasolina">Gasolina</string>
     <string name="SwitchtxtAlcool">Alcool</string>
+    <string name="SwitchIdaEVolta2">Ida e volta</string>
+
 
 
     <!-- TODO: Remove or change this placeholder text -->

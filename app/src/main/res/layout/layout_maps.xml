@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Mapa.MapsActivity" />
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Mapa.MapsActivity" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,21 +82,32 @@
 
 
     </RelativeLayout>
+
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:id="@+id/relLayout3"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="120dp"
-        android:id="@+id/relLayout3">
+        android:layout_marginTop="120dp">
 
         <Button
             android:id="@+id/BotaoCalcularGastoPorTrajeto"
-            android:text="@string/Calcular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:background="@drawable/white_border"
-            android:layout_alignParentRight="true"/>
+            android:text="@string/Calcular"
+            android:visibility="visible" />
+        <Switch
+            android:id="@+id/SwitchIdaEVolta2"
+            android:text="@string/SwitchIdaEVolta2"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_toLeftOf="@id/BotaoCalcularGastoPorTrajeto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
+
+
 
 </RelativeLayout>
