@@ -1,6 +1,5 @@
 package com.example.savegas.OpcoesMenu;
 
-import android.Manifest;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -16,8 +15,6 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.example.savegas.Mapa.Helpers.MapsDistanceMatrix;
-import com.example.savegas.Mapa.Helpers.PlaceAutocompleteAdapter;
 import com.example.savegas.Mapa.Helpers.directionhelpers.FetchURL;
 import com.example.savegas.R;
 import com.example.savegas.TaskLoadedCallback;
@@ -29,7 +26,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;

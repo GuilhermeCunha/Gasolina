@@ -53,7 +53,6 @@
         <activity android:name=".OpcoesMenu.configuracoes" />
         <activity android:name=".OpcoesMenu.gasolinaOuAlcool" />
         <activity android:name=".OpcoesMenu.calculoAbastecimento" />
-        <activity android:name=".OpcoesMenu.Antigos.valorAGastarPorTrajeto" />
         <activity android:name=".OpcoesMenu.mediaDeConsumoKmInicialKmFinal" />
         <activity android:name=".OpcoesMenu.mediaDeConsumoPorKm" />
     </application>

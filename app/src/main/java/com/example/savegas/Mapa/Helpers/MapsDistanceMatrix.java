@@ -22,6 +22,7 @@ import java.io.UnsupportedEncodingException;
 
 
 public class MapsDistanceMatrix {
+    private static String TAG = "MapsDistanceMatrix";
     public static InputStream is = null;
     public static JSONObject jObj = null;
     public static String json = "";
@@ -71,13 +72,10 @@ public class MapsDistanceMatrix {
         } catch (JSONException e) {
             System.out.println("error on parse data in jsonparser.java");
         }
-        JSONObject jsonObject = new JSONObject();
+        //JSONObject jsonObject = new JSONObject();
         try {
-            Log.e("DISTANCIA", "TO NO ULTIMO TRY");
-/*
-            jsonObject = new JSONObject(stringBuilder.toString());
 
-            JSONArray array = jsonObject.getJSONArray("routes");
+            JSONArray array = jObj.getJSONArray("routes");
 
             JSONObject routes = array.getJSONObject(0);
 
@@ -87,14 +85,13 @@ public class MapsDistanceMatrix {
 
             JSONObject distance = steps.getJSONObject("distance");
 
-            Log.e("DISTANCIA", distance.toString());
-            dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
-*/
+            Log.e(TAG, "Distância: " + distance.toString());
+            double dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
+            return dist;
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         return 0.0;
     }
 }
