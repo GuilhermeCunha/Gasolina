@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Launcher.Menu"
+    android:background="@drawable/background1"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/conf"
+            android:layout_marginTop="10dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="340dp"
+            android:src="@drawable/cog_icon"
+            android:background="@null"/>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="35dp"
+            android:layout_height="180dp"
+            android:src="@drawable/savegas_newicon"
+            />
+
+        <Button
+            android:id="@+id/btcad"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/background1"
+            android:text="CADASTRO DE CARRO"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_default"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/vltrajeto"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/background1"
+            android:text="VALOR A GASTAR POR TRAJETO"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/maisopcoes"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/background1"
+            android:text="MAIS OPÇÕES"
+            android:textColorHighlight="@color/common_google_signin_btn_text_dark_pressed"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

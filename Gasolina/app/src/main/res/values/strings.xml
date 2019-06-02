@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SaveGas</string>
+    <string name="media1">Media de consumo / Km percorrido</string>
+    <string name="media2">Media de consumo / Km inicial / Km final</string>
+    <string name="valortrajeto">Valor a Gastar por Trajeto</string>
+    <string name="calculoabastecimento">Calculo abastecimento</string>
+    <string name="gasolinaalcool">Gasolina ou Alcool</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="KmsRodados">Kms Rodados</string>
+    <string name="LitrosAbastecidos">Litros Abastecidos</string>
+    <string name="Calcular">Calcular</string>
+    <string name="TxtOrigem">Endereço de origem:</string>
+    <string name="TxtDestino">Endereço de destino:</string>
+    <string name="BotaoValorTrajeto">Calcular valor do trajeto</string>
+    <string name="TxtConsumo">Qual o consumo em Km/l do seu carro?</string>
+    <string name="TxtValorCombustivel">Qual o valor do litro do combustível?</string>
+    <string name="CheckIdaEVolta">Ida e volta</string>
+    <string name="HintEditOrigem">Rua Gilberto Freyre</string>
+    <string name="HintEditDestino">Avenida Manuel Dias</string>
+    <string name="HintEditConsumo">9.5</string>
+    <string name="HintEditValorCombustivel">4.25</string>
+    <string name="TxtNomeCarro">Qual o modelo do seu carro?</string>
+    <string name="HintNomeCarro">Uno</string>
+    <string name="TxtConsumoCarro">Quantos Km/l de combustível o seu carro faz?</string>
+    <string name="HintConsumoCarro">8.5</string>
+    <string name="BotaoCadastrarCarro">Cadastrar Carro</string>
+    <string name="TxtConsultarCarroPorNome">Nome do carro:</string>
+    <string name="BotaoBuscarCarro">Buscar Carro</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="BotaoParaMapa">Abrir mapa</string>
+    <string name="TxtModeloDoCarro">Digite o modelo do seu carro</string>
+    <string name="TxtConsumoDoCarro">Digite o consumo do seu carro em Km/l</string>
+    <string name="SwitchtxtGasolina">Gasolina</string>
+    <string name="SwitchtxtAlcool">Alcool</string>
+    <string name="SwitchIdaEVolta2">Ida e volta</string>
+    <string name="Alcool">Informe o KM/L em alcool</string>
+    <string name="KmlAlcool">Informe o KM/L em gasolina</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

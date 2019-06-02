@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Launcher.Menu"
+    android:background="@drawable/background1"
+    >
+
+    <ImageView
+
+        android:layout_marginTop="25dp"
+        android:layout_width="fill_parent"
+        android:layout_height="170dp"
+        android:src="@drawable/savegas_newicon"
+        android:layout_marginLeft="35dp"
+        />
+
+    <TextView
+        android:layout_marginTop="45dp"
+        android:id="@+id/TextKmInicio"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KM de Início:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+
+        />
+
+
+    <EditText
+        android:id="@+id/kmInicio"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/TextKmInicio"
+        android:layout_marginTop="0dp"
+        android:inputType="number|numberDecimal"
+        />
+
+    <TextView
+        android:id="@+id/TextlitrosAbastecidos2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextKmInicio"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Litros Abastecidos:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/litrosabastecidos2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/TextlitrosAbastecidos2"
+        android:layout_marginTop="0dp" />
+        android:inputType="number|numberDecimal"
+
+    <TextView
+        android:id="@+id/TextKmFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/litrosabastecidos2"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="KM do Final:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/kmfinal"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/TextKmFinal"
+        android:layout_marginTop="0dp" />
+    android:inputType="number|numberDecimal"
+
+    <Button
+        android:id="@+id/caclkminicialfinal"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/editLitrosAbastecidos"
+        android:layout_alignRight="@+id/editLitrosAbastecidos"
+        android:layout_marginTop="35dp"
+        android:text="@string/Calcular"
+        android:textSize="18dp"
+        android:background="@drawable/background1"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_gravity="center"
+
+        />
+
+
+</LinearLayout>

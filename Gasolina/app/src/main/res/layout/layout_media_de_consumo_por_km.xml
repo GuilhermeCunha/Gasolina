@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Launcher.Menu"
+    android:background="@drawable/background1"
+    >
+
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Launcher.Menu"
+        android:background="@drawable/background1"
+        >
+
+        <ImageView
+
+            android:layout_marginTop="25dp"
+            android:layout_width="fill_parent"
+            android:layout_height="170dp"
+            android:src="@drawable/savegas_newicon"
+            android:layout_marginLeft="35dp"
+            />
+
+        <TextView
+            android:layout_marginTop="70dp"
+            android:id="@+id/TextKmsRodados"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KM's Rodados:"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+
+            />
+
+
+        <EditText
+            android:id="@+id/kmrodados"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/TextKmsRodados"
+            android:layout_marginTop="0dp"
+            />
+
+        <TextView
+            android:id="@+id/TextLitrosAbastecidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/kmrodados"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Litros Abastecidos:"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/litrosabastecidos"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_below="@+id/TextLitrosAbastecidos"
+            android:layout_marginTop="0dp" />
+
+        <Button
+            android:id="@+id/calcMedKMpercorridos"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_below="@+id/litrosabastecidos"
+            android:layout_alignRight="@+id/litrosabastecidos"
+            android:layout_marginTop="43dp"
+            android:text="@string/Calcular"
+            android:textSize="18dp"
+            android:background="@drawable/background1"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_gravity="center"
+
+            />
+
+
+    </LinearLayout>

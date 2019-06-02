@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Launcher.Menu"
+    android:background="@drawable/background1"
+    >
+
+    <ImageView
+
+        android:layout_width="wrap_content"
+        android:layout_height="108dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/savegas_newicon" />
+
+    <TextView
+        android:id="@+id/TextModeloCarro"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="Insira o Modelo do Carro:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="30dp"
+
+        />
+
+
+    <EditText
+        android:id="@+id/modelocarro"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_below="@+id/TextModeloCarro"
+        android:layout_marginTop="0dp"
+        android:inputType="number|numberDecimal" />
+
+    <CheckBox
+        android:id="@+id/flex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp"
+        android:text="O carro é Flex"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/TextKmPorLitro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/modelocarro"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Quanto KM/L faz o Carro:"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:textSize="30dp" />
+
+    <EditText
+        android:id="@+id/kmporlitro"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@+id/TextKmPorLitro"
+        android:layout_marginTop="0dp" />
+    android:inputType="number|numberDecimal"
+
+    <TextView
+        android:id="@+id/Alcool"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:text="Informe o KM/L em alcool" />
+
+    <EditText
+        android:id="@+id/KmlAlcool"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_below="@+id/KmlAlcool"
+        android:layout_marginTop="0dp"
+        android:inputType="number|numberDecimal" />
+
+    <Button
+        android:id="@+id/btcadcarro"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/flex"
+        android:layout_alignRight="@+id/editLitrosAbastecidos"
+        android:layout_marginTop="43dp"
+        android:text="CADASTRAR"
+        android:textSize="18dp"
+        android:background="@drawable/background1"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+        android:layout_gravity="center"
+
+        />
+
+
+</LinearLayout>
